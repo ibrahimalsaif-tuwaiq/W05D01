@@ -35,7 +35,7 @@ app.get("/todos", (req, res) => {
 });
 
 // Get todo with ID params
-app.get("/todos/:id", (req, res) => {
+app.get("/todos/:id/view", (req, res) => {
   const todo = todos.find((todo) => todo.id == req.params.id);
 
   if (todo){
@@ -49,7 +49,7 @@ app.get("/todos/:id", (req, res) => {
 });
 
 // Get todos that are completed
-app.get("/todos_completed", (req, res) => {
+app.get("/todos/completed", (req, res) => {
   const newTodos = todos.filter((todo) => todo.completed == true);
 
   if (newTodos.length){
@@ -63,7 +63,7 @@ app.get("/todos_completed", (req, res) => {
 });
 
 // Get todos that are uncompleted
-app.get("/todos_uncompleted", (req, res) => {
+app.get("/todos/uncompleted", (req, res) => {
   const newTodos = todos.filter((todo) => todo.completed == false);
 
   if (newTodos.length){
@@ -78,7 +78,7 @@ app.get("/todos_uncompleted", (req, res) => {
 
 // POST //
 
-app.post("/todos/create", (req, res) => {
+app.post("/todos", (req, res) => {
   todos.push({
     id: ++idCounter,
     task: req.body.task,
